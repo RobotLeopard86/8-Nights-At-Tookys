@@ -10,9 +10,11 @@ public class OfficeController : MonoBehaviour
     void Update()
     {
         Vector3 mouse = Input.mousePosition;
-        if(mouse.x < 860 && transform.rotation.eulerAngles.y > 70.25f){
+        Display screen = Display.displays[gameObject.GetComponent<Camera>().targetDisplay];
+
+        if(mouse.x < ((screen.systemWidth / 2) - (screen.systemWidth / 19.2)) && transform.rotation.eulerAngles.y > 70.25f){
             transform.Rotate(0, -0.25f, 0);
-        } else if(mouse.x > 1060 && transform.rotation.eulerAngles.y < 110f){
+        } else if(mouse.x > ((screen.systemWidth / 2) + (screen.systemWidth / 19.2)) && transform.rotation.eulerAngles.y < 110f){
             transform.Rotate(0, 0.25f, 0);
         }
     }
